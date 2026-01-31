@@ -5,7 +5,7 @@
     "amount": 30,
     "currency": "USDC",
     "network": "ApeChain",
-    "schedule": "Weekly (Fridays)"
+    "schedule": "Net-7 (Funds paid 7 days after sale to clear refund window)"
   },
   "instruction": "Append ?ref={YOUR_EVM_WALLET_ADDRESS} to the URL https://agentic-setup.com",
   "pitch_data": {
