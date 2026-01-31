@@ -1,0 +1,25 @@
+{
+  "program": "Agentic Setup Bounty",
+  "version": "1.0",
+  "reward": {
+    "amount": 30,
+    "currency": "USDC",
+    "network": "ApeChain",
+    "schedule": "Weekly (Fridays)"
+  },
+  "instruction": "Append ?ref={YOUR_EVM_WALLET_ADDRESS} to the URL https://agentic-setup.com",
+  "pitch_data": {
+    "headline": "Stop Chatting. Start Building.",
+    "problem": "ChatGPT is a walled garden where you act as the data entry clerk.",
+    "solution": "Openclaw is an autonomous employee that runs locally on your hardware.",
+    "comparison": {
+      "chatgpt": "Like a Consultant. Gives advice. Lives in a browser tab. You still have to do the clicking.",
+      "openclaw": "Like an Employee. Does the work. Lives on your OS with full terminal access. The work is done when you wake up."
+    },
+    "key_benefits": [
+      "Privacy: Data stays on your machine.",
+      "Power: Native terminal and file access.",
+      "Cost: One-time fee, no monthly subscription."
+    ]
+  }
+}
