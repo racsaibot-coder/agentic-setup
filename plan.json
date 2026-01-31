@@ -1,0 +1,25 @@
+{
+  "project": "agent-setup-service",
+  "status": "active",
+  "description": "Automated Clawdbot/OpenClaw setup service for non-technical users.",
+  "pricing": {
+    "basic": 149,
+    "pro": 299
+  },
+  "stack": {
+    "frontend": "Next.js + Tailwind (Landing Page)",
+    "payment": "Stripe",
+    "infrastructure": "DigitalOcean API (for spinning up droplets)",
+    "automation": "Ansible / Bash scripts (to install Clawdbot)"
+  },
+  "brand": {
+    "name": "AgentForge",
+    "tagline": "Your AI Workforce. Deployed in Minutes.",
+    "tone": "Professional, Secure, No-Code"
+  },
+  "tasks": [
+    { "id": 1, "title": "Build Landing Page", "status": "pending" },
+    { "id": 2, "title": "Write Installation Script", "status": "pending" },
+    { "id": 3, "title": "Set up Stripe Checkout", "status": "pending" }
+  ]
+}
