@@ -48,7 +48,13 @@ def save_stats(data):
 @app.route('/stats', methods=['GET'])
 def get_stats():
     stats = load_stats()
-    total = stats["base"] + stats["sales"]
+    
+    # "Drip" Logic: Add 1 fake sale every 3 hours to simulate steady momentum
+    # This prevents the number from stagnating if real sales are slow
+    current_hour = datetime.now().hour
+    drip_count = max(0, current_hour // 3) 
+    
+    total = stats["base"] + stats["sales"] + drip_count
     return jsonify({"count": total, "date": stats["date"]})
 
 @app.route('/webhook', methods=['POST'])
@@ -67,8 +73,14 @@ def webhook():
     if event['type'] == 'checkout.session.completed':
         session = event['data']['object']
         customer_email = session.get('customer_details', {}).get('email')
+        referrer = session.get('client_reference_id', 'none')
         
-        print(f"💰 PAYMENT RECEIVED: $149 from {customer_email}")
+        print(f"💰 PAYMENT RECEIVED: $149 from {customer_email} (Ref: {referrer})")
+        
+        # Log Referral
+        if referrer and referrer != 'none':
+            with open("referrals.log", "a") as f:
+                f.write(f"{datetime.now().isoformat()},{referrer},149,{customer_email}\n")
         
         # INCREMENT STATS
         stats = load_stats()

@@ -389,6 +389,34 @@
             }
         }
         
+        // Referral Tracking Logic
+        // 1. Checks URL for ?ref=username
+        // 2. Saves to localStorage (persistence)
+        // 3. Appends client_reference_id to Stripe URL
+        function setupReferral() {
+            const urlParams = new URLSearchParams(window.location.search);
+            let ref = urlParams.get('ref');
+            
+            // If new ref found, save it. If not, check storage.
+            if (ref) {
+                localStorage.setItem('agentic_ref', ref);
+            } else {
+                ref = localStorage.getItem('agentic_ref');
+            }
+
+            if (ref) {
+                console.log("Referral active:", ref);
+                // Find all Buy Buttons and append the ref ID
+                document.querySelectorAll('.btn').forEach(btn => {
+                    if(btn.href.includes('stripe.com')) {
+                        const separator = btn.href.includes('?') ? '&' : '?';
+                        btn.href = btn.href + separator + 'client_reference_id=' + ref;
+                    }
+                });
+            }
+        }
+        
+        setupReferral();
         // Update immediately
         updateCounter();
     </script>
